@@ -20,19 +20,20 @@ This guide explains how to set up and customize this Jekyll-based website templa
 
 1. Fork or clone this repository
 2. Navigate to the project directory
-3. Install dependencies:
+3. Update the relevant files with your personal information (see below)
+4. Install dependencies:
 
    ```bash
    bundle install
    ```
 
-4. Start the development server:
+5. Start the development server:
 
    ```bash
    bundle exec jekyll serve
    ```
 
-5. Visit `http://localhost:4000` to see your site
+6. Visit `http://localhost:4000` to see your site
 
 ## Configuration
 
