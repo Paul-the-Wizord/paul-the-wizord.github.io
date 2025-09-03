@@ -11,7 +11,7 @@
     content="A guide to setting up and customizing this Jekyll-based academic website template.">
 
   <!-- Canonical URL -->
-  <link rel="canonical" href="http://localhost:4000/post/2025-08-30-website-setup-guide/">
+  <link rel="canonical" href="http://localhost:4000/post/2025-09-03-website-setup-guide/">
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="/assets/css/style.css">
@@ -55,7 +55,7 @@
               loading="lazy">
           </div>
           <h1 class="profile-name">Paul Gondolf</h1>
-          <p class="profile-bio">Mathematics PhD student at University of Tübingen. Interested in quantum information theory, mathematical physics, software development and machine learning.</p>
+          <p class="profile-bio">Mathematics PhD student at University of Tübingen. Interested in (quantum) information theory, statistics, mathematical physics, software development and machine learning.</p>
         </div>
 
         <!-- Social Links -->
@@ -66,6 +66,17 @@
           
           <a href="https://orcid.org/0000-0002-5862-5391" aria-label="ORCID profile">ORCID</a>
           
+          
+          <a href="#" onclick="sendEmail()" aria-label="Email contact">@</a>
+          <script>
+            function sendEmail() {
+              const user = 'paul.gondolf.work';
+              const domain = 'gmail.com';
+              window.location.href = 'mailto:' + user + '@' + domain;
+            }
+          </script>
+          
+
         </div>
 
         <!-- Navigation -->
@@ -100,8 +111,8 @@
   <!-- Post Header -->
   <header class="post-header">
     <h1 class="page-title">How to setup a similar page</h1>
-    <time datetime="2025-08-30T00:00:00+02:00">
-      August 30, 2025
+    <time datetime="2025-09-03T00:00:00+02:00">
+      September 03, 2025
     </time>
     
     
@@ -155,6 +166,8 @@
 <span class="na">url</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://yourusername.github.io"</span>
 <span class="na">github_username</span><span class="pi">:</span> <span class="s">your-github-username</span>
 <span class="na">orcid_id</span><span class="pi">:</span> <span class="s">0000-0000-0000-0000</span>
+<span class="na">email_user</span><span class="pi">:</span> <span class="s">your-email-username</span>
+<span class="na">email_domain</span><span class="pi">:</span> <span class="s">example.com</span>
 </code></pre></div></div>
 
 <h2 id="page-templates--usage">Page Templates &amp; Usage</h2>

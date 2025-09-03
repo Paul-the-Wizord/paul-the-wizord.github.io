@@ -8,7 +8,7 @@
 
   <title>Lecture Notes | Paul Gondolf</title>
   <meta name="description"
-    content="Mathematics PhD student at University of Tübingen. Interested in quantum information theory, mathematical physics, software development and machine learning.">
+    content="Mathematics PhD student at University of Tübingen. Interested in (quantum) information theory, statistics, mathematical physics, software development and machine learning.">
 
   <!-- Canonical URL -->
   <link rel="canonical" href="http://localhost:4000/lecture-notes/">
@@ -55,7 +55,7 @@
               loading="lazy">
           </div>
           <h1 class="profile-name">Paul Gondolf</h1>
-          <p class="profile-bio">Mathematics PhD student at University of Tübingen. Interested in quantum information theory, mathematical physics, software development and machine learning.</p>
+          <p class="profile-bio">Mathematics PhD student at University of Tübingen. Interested in (quantum) information theory, statistics, mathematical physics, software development and machine learning.</p>
         </div>
 
         <!-- Social Links -->
@@ -66,6 +66,17 @@
           
           <a href="https://orcid.org/0000-0002-5862-5391" aria-label="ORCID profile">ORCID</a>
           
+          
+          <a href="#" onclick="sendEmail()" aria-label="Email contact">@</a>
+          <script>
+            function sendEmail() {
+              const user = 'paul.gondolf.work';
+              const domain = 'gmail.com';
+              window.location.href = 'mailto:' + user + '@' + domain;
+            }
+          </script>
+          
+
         </div>
 
         <!-- Navigation -->

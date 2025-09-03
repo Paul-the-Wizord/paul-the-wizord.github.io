@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How to setup a similar page"
-date: 2025-08-30
+date: 2025-09-03
 author: Paul Gondolf (with the help of Claude)
 excerpt: "A guide to setting up and customizing this Jekyll-based academic website template."
 ---
@@ -48,6 +48,8 @@ description: >-
 url: "https://yourusername.github.io"
 github_username: your-github-username
 orcid_id: 0000-0000-0000-0000
+email_user: your-email-username
+email_domain: example.com
 ```
 
 ## Page Templates & Usage

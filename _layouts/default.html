@@ -66,6 +66,17 @@
           {% if site.orcid_id %}
           <a href="https://orcid.org/{{ site.orcid_id }}" aria-label="ORCID profile">ORCID</a>
           {% endif %}
+          {% if site.email_user and site.email_domain %}
+          <a href="#" onclick="sendEmail()" aria-label="Email contact">@</a>
+          <script>
+            function sendEmail() {
+              const user = '{{ site.email_user }}';
+              const domain = '{{ site.email_domain }}';
+              window.location.href = 'mailto:' + user + '@' + domain;
+            }
+          </script>
+          {% endif %}
+
         </div>
 
         <!-- Navigation -->
