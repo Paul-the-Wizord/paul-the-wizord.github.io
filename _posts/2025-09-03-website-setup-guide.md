@@ -33,7 +33,7 @@ This guide explains how to set up and customize this Jekyll-based website templa
    bundle exec jekyll serve
    ```
 
-6. Visit `http://localhost:4000` to see your site
+6. Visit `http://localhost:4000/baseurl` to see your site
 
 ## Configuration
 
