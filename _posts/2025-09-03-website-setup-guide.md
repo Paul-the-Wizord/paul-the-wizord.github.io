@@ -56,6 +56,13 @@ email_domain: "example.com"
 
 Of course you should also update the cv.md, index.md, lecture_notes.md, research.md and talks.md with your own information.
 
+### Additional Customizations
+
+Don't forget to personalize these visual elements:
+
+- **Profile Image**: Replace the default profile image in `/assets/images/profile.jpg` with your own professional photo
+- **Favicon**: Create and add a favicon (the small icon in browser tabs) - you can use your initials, a professional headshot, or a symbol related to your field. Place favicon files in `/assets/images/` and add the appropriate `<link>` tags to your layout's `<head>` section
+
 In the robots.txt you should change the link to the Sitemap and also set your privacy settings.
 
 ```txt
