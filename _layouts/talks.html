@@ -1,0 +1,51 @@
+---
+layout: default
+---
+
+<header class="page-header">
+    <h1 class="page-title">{{ page.title }}</h1>
+    {% if page.description %}
+    {{ page.description }}
+    {% endif %}
+</header>
+
+<!-- Talk section -->
+{% if page.talks and page.talks.size > 0 %}
+<div class="list">
+    {% for talk in page.talks %}
+    <article class="list-item">
+        <h2 class="list-title">{{ talk.title }}</h2>
+        <div class="list-meta">
+            {% for meta in talk.meta %}
+            {{ meta }}
+            {% unless forloop.last %} • {% endunless %}
+            {% endfor %}
+        </div>
+        <div class="list-description">
+            {{ talk.description }}
+        </div>
+        {% if talk.links and talk.links.size > 0 %}
+        <div class="list-links">
+            {% for link in talk.links %}
+            <a href="{{ link.url }}" class="btn">{{ link.text }}</a>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </article>
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- Custom Content -->
+{% if content and content != empty %}
+<section class="content-section">
+    {{ content }}
+</section>
+{% endif %}
+
+<!-- Last Updated -->
+{% if page.last_updated %}
+<div class="last-updated">
+    Last update {{ page.last_updated }}
+</div>
+{% endif %}

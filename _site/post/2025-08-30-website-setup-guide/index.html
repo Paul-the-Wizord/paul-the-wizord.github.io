@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>How to setup a similar page | Paul Gondolf</title>
+  <meta name="description"
+    content="A guide to setting up and customizing this Jekyll-based academic website template.">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="http://localhost:4000/post/2025-08-30-website-setup-guide/">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+  <!-- MathJax Configuration -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+
+  <div class="layout-wrapper">
+    <!-- Sidebar -->
+    <aside class="sidebar" role="complementary">
+      <div class="sidebar-content">
+        <!-- Profile Section -->
+        <div class="profile">
+          <div class="profile-image">
+            <img src="/assets/images/profile.png" alt="Paul Gondolf profile picture"
+              loading="lazy">
+          </div>
+          <h1 class="profile-name">Paul Gondolf</h1>
+          <p class="profile-bio">Mathematics PhD student at University of Tübingen. Interested in quantum information theory, mathematical physics, software development and machine learning.</p>
+        </div>
+
+        <!-- Social Links -->
+        <div class="social-links" role="navigation" aria-label="Social media links">
+          
+          <a href="https://github.com/Paul-the-Wizord" aria-label="GitHub profile">GitHub</a>
+          
+          
+          <a href="https://orcid.org/0000-0002-5862-5391" aria-label="ORCID profile">ORCID</a>
+          
+        </div>
+
+        <!-- Navigation -->
+        <nav class="sidebar-nav" role="navigation" aria-label="Main navigation">
+          <a href="/" class="" >
+            Home
+          </a>
+          <a href="/research/" class=""
+            >
+            Research
+          </a>
+          <a href="/cv/" class="" >
+            CV
+          </a>
+          <a href="/talks/" class="" >
+            Talks
+          </a>
+          <a href="/lecture-notes/"
+            class="" >
+            Lecture Notes
+          </a>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Main Content Container -->
+    <div class="content-container">
+      <!-- Main Content -->
+      <main class="main-content" id="main-content" role="main">
+        <div class="content-width">
+          <article>
+  <!-- Post Header -->
+  <header class="post-header">
+    <h1 class="page-title">How to setup a similar page</h1>
+    <time datetime="2025-08-30T00:00:00+02:00">
+      August 30, 2025
+    </time>
+    
+    
+    • Paul Gondolf (with the help of Claude)
+    
+  </header>
+
+  <!-- Post Content -->
+  <p>This guide explains how to set up and customize this Jekyll-based website template.</p>
+
+<h2 id="quick-start">Quick Start</h2>
+
+<h3 id="prerequisites">Prerequisites</h3>
+
+<ul>
+  <li>Ruby (2.7+)</li>
+  <li>Bundler gem</li>
+  <li>Git</li>
+</ul>
+
+<h3 id="installation">Installation</h3>
+
+<ol>
+  <li>Fork or clone this repository</li>
+  <li>Navigate to the project directory</li>
+  <li>
+    <p>Install dependencies:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Start the development server:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll serve
+</code></pre></div>    </div>
+  </li>
+  <li>Visit <code class="language-plaintext highlighter-rouge">http://localhost:4000</code> to see your site</li>
+</ol>
+
+<h2 id="configuration">Configuration</h2>
+
+<h3 id="site-settings-_configyml">Site Settings (_config.yml)</h3>
+
+<p>Update the main configuration file with your information:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Your</span><span class="nv"> </span><span class="s">Name"</span>
+<span class="na">email</span><span class="pi">:</span> <span class="s">your.email@example.com</span>
+<span class="na">description</span><span class="pi">:</span> <span class="pi">&gt;-</span>
+  <span class="s">Your professional description here.</span>
+<span class="na">url</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://yourusername.github.io"</span>
+<span class="na">github_username</span><span class="pi">:</span> <span class="s">your-github-username</span>
+<span class="na">orcid_id</span><span class="pi">:</span> <span class="s">0000-0000-0000-0000</span>
+</code></pre></div></div>
+
+<h2 id="page-templates--usage">Page Templates &amp; Usage</h2>
+
+<h3 id="cv-page-cvmd">CV Page (cv.md)</h3>
+
+<p>The CV template supports structured data for education, teaching, and work experience:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">cv</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">Curriculum Vitae</span>
+<span class="na">permalink</span><span class="pi">:</span> <span class="s">/cv/</span>
+<span class="na">last_updated</span><span class="pi">:</span> <span class="s">August </span><span class="m">2025</span>
+
+<span class="na">education</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">date</span><span class="pi">:</span> <span class="s">Present</span>
+    <span class="na">degree</span><span class="pi">:</span> <span class="s">PhD in Mathematics</span>
+    <span class="na">institution</span><span class="pi">:</span> <span class="s">University Name</span>
+    <span class="na">institution_url</span><span class="pi">:</span> <span class="s">https://university.edu/</span>
+    <span class="na">location</span><span class="pi">:</span> <span class="s">City, Country</span>
+    <span class="na">details</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">label</span><span class="pi">:</span> <span class="s">Expected Graduation</span>
+        <span class="na">text</span><span class="pi">:</span> <span class="s">Month Year</span>
+      <span class="pi">-</span> <span class="na">label</span><span class="pi">:</span> <span class="s">Thesis</span>
+        <span class="na">text</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Your</span><span class="nv"> </span><span class="s">thesis</span><span class="nv"> </span><span class="s">title"</span>
+        <span class="na">link</span><span class="pi">:</span> <span class="s">/path/to/thesis.pdf</span>
+      <span class="pi">-</span> <span class="na">label</span><span class="pi">:</span> <span class="s">Research Focus</span>
+        <span class="na">text</span><span class="pi">:</span> <span class="s">Your research area</span>
+
+<span class="na">teaching</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Course Title</span>
+    <span class="na">period</span><span class="pi">:</span> <span class="s">2022 - </span><span class="m">2024</span>
+    <span class="na">institution</span><span class="pi">:</span> <span class="s">University Name</span>
+    <span class="na">institution_url</span><span class="pi">:</span> <span class="s">https://university.edu/</span>
+    <span class="na">responsibilities</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">Responsibility </span><span class="m">1</span>
+      <span class="pi">-</span> <span class="s">Responsibility </span><span class="m">2</span>
+
+<span class="na">work</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">date</span><span class="pi">:</span> <span class="s">2021-2022</span>
+    <span class="na">position</span><span class="pi">:</span> <span class="s">Job Title</span>
+    <span class="na">company</span><span class="pi">:</span> <span class="s">Company Name</span>
+    <span class="na">company_url</span><span class="pi">:</span> <span class="s">https://company.com/</span>
+    <span class="na">location</span><span class="pi">:</span> <span class="s">City, Country</span>
+    <span class="na">description</span><span class="pi">:</span> <span class="s">Brief job description</span>
+    <span class="na">achievements</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">Achievement </span><span class="m">1</span>
+      <span class="pi">-</span> <span class="s">Achievement </span><span class="m">2</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<h3 id="research-page-researchmd">Research Page (research.md)</h3>
+
+<p>The research template organizes publications and preprints:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">research</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">Research</span>
+<span class="na">permalink</span><span class="pi">:</span> <span class="s">/research/</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s">Brief description of your research</span>
+
+<span class="na">published_papers</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Paper</span><span class="nv"> </span><span class="s">Title"</span>
+    <span class="na">journal</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Journal</span><span class="nv"> </span><span class="s">Name"</span>
+    <span class="na">year</span><span class="pi">:</span> <span class="m">2024</span>
+    <span class="na">authors</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Coauthor</span><span class="nv"> </span><span class="s">Name"</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Your</span><span class="nv"> </span><span class="s">Name"</span>
+        <span class="na">highlight</span><span class="pi">:</span> <span class="no">true</span>  <span class="c1"># Highlights your name</span>
+    <span class="na">abstract</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Paper</span><span class="nv"> </span><span class="s">abstract</span><span class="nv"> </span><span class="s">here..."</span>
+    <span class="na">award</span><span class="pi">:</span>  <span class="c1"># Optional</span>
+      <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Award</span><span class="nv"> </span><span class="s">Name"</span>
+      <span class="na">url</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://award-url.com"</span>
+      <span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Award</span><span class="nv"> </span><span class="s">description"</span>
+    <span class="na">links</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">text</span><span class="pi">:</span> <span class="s2">"</span><span class="s">arXiv:1234.5678"</span>
+        <span class="na">url</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://arxiv.org/abs/1234.5678"</span>
+      <span class="pi">-</span> <span class="na">text</span><span class="pi">:</span> <span class="s2">"</span><span class="s">DOI"</span>
+        <span class="na">url</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://doi.org/..."</span>
+
+<span class="na">preprints</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Preprint</span><span class="nv"> </span><span class="s">Title"</span>
+    <span class="na">status</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Submitted</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">Journal</span><span class="nv"> </span><span class="s">Name"</span>
+    <span class="na">year</span><span class="pi">:</span> <span class="m">2024</span>
+    <span class="na">authors</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">same format as above</span><span class="pi">]</span>
+    <span class="na">abstract</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Abstract..."</span>
+    <span class="na">links</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">same format as above</span><span class="pi">]</span>
+
+<span class="na">research_interests</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">area</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Research</span><span class="nv"> </span><span class="s">Area</span><span class="nv"> </span><span class="s">1"</span>
+    <span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Description</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">research</span><span class="nv"> </span><span class="s">area"</span>
+  <span class="pi">-</span> <span class="na">area</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Research</span><span class="nv"> </span><span class="s">Area</span><span class="nv"> </span><span class="s">2"</span>
+    <span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Description</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">research</span><span class="nv"> </span><span class="s">area"</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<h3 id="talks-page-talksmd">Talks Page (talks.md)</h3>
+
+<p>Create a talks page following this structure:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">talks</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">Talks</span>
+<span class="na">permalink</span><span class="pi">:</span> <span class="s">/talks/</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s">Conference presentations and seminars</span>
+
+<span class="na">talks</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Talk</span><span class="nv"> </span><span class="s">Title"</span>
+    <span class="na">meta</span><span class="pi">:</span> <span class="c1"># all optional </span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">Conference/Seminar</span><span class="nv"> </span><span class="s">Name"</span> 
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">Month</span><span class="nv"> </span><span class="s">Year"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">City,</span><span class="nv"> </span><span class="s">Country"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">Conference</span><span class="nv"> </span><span class="s">Talk"</span> <span class="c1"># or "Seminar", "Poster", etc.</span>
+    <span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Talk</span><span class="nv"> </span><span class="s">abstract..."</span> <span class="c1"># or summary, etc.</span>
+    <span class="na">links</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">text</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Slides"</span>
+        <span class="na">url</span><span class="pi">:</span> <span class="s2">"</span><span class="s">/path/to/slides.pdf"</span>
+      <span class="pi">-</span> <span class="na">text</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Video"</span>
+        <span class="na">url</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://youtube.com/..."</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<h3 id="lecture-notes-page-lecture_notesmd">Lecture Notes Page (lecture_notes.md)</h3>
+
+<p>Structure for course materials:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">lecture_notes</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">Lecture Notes</span>
+<span class="na">permalink</span><span class="pi">:</span> <span class="s">/lecture-notes/</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s">Course materials and educational resources</span>
+
+<span class="na">courses</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Course</span><span class="nv"> </span><span class="s">Name"</span>
+    <span class="na">institution</span><span class="pi">:</span> <span class="s2">"</span><span class="s">University</span><span class="nv"> </span><span class="s">Name"</span>
+    <span class="na">year</span><span class="pi">:</span> <span class="s2">"</span><span class="s">2024"</span>
+    <span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Course</span><span class="nv"> </span><span class="s">description"</span>
+    <span class="na">topics</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">Topic</span><span class="nv"> </span><span class="s">1"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">Topic</span><span class="nv"> </span><span class="s">2"</span>
+    <span class="na">materials</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">text</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Notes</span><span class="nv"> </span><span class="s">PDF"</span>
+        <span class="na">url</span><span class="pi">:</span> <span class="s2">"</span><span class="s">/path/to/notes.pdf"</span>
+      <span class="pi">-</span> <span class="na">text</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Problem</span><span class="nv"> </span><span class="s">Sets"</span>
+        <span class="na">url</span><span class="pi">:</span> <span class="s2">"</span><span class="s">/path/to/problems.pdf"</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<h2 id="creating-blog-posts">Creating Blog Posts</h2>
+
+<p>Blog posts go in the <code class="language-plaintext highlighter-rouge">_posts/</code> directory with the naming convention: <code class="language-plaintext highlighter-rouge">YYYY-MM-DD-title.md</code></p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">post</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Your</span><span class="nv"> </span><span class="s">Post</span><span class="nv"> </span><span class="s">Title"</span>
+<span class="na">date</span><span class="pi">:</span> <span class="s">2025-08-30</span>
+<span class="na">author</span><span class="pi">:</span> <span class="s">Your Name</span>
+<span class="na">excerpt</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Brief</span><span class="nv"> </span><span class="s">description</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">previews"</span>
+<span class="na">reading_time</span><span class="pi">:</span> <span class="m">5</span>  <span class="c1"># Optional: estimated reading time in minutes</span>
+<span class="nn">---</span>
+
+<span class="s">Your post content here using Markdown syntax.</span>
+
+<span class="c1">## Math Support</span>
+<span class="na">The template includes MathJax for mathematical expressions</span><span class="pi">:</span>
+
+<span class="na">Inline math</span><span class="pi">:</span> <span class="s">$E = mc^2$</span>
+
+<span class="na">Display math</span><span class="pi">:</span>
+<span class="s">$$\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}$$</span>
+</code></pre></div></div>
+
+<h2 id="customization-tips">Customization Tips</h2>
+
+<h3 id="colors--styling">Colors &amp; Styling</h3>
+
+<p>Modify CSS variables in <code class="language-plaintext highlighter-rouge">assets/css/style.css</code>:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">:root</span> <span class="p">{</span>
+    <span class="py">--color-primary</span><span class="p">:</span> <span class="m">#B8724D</span><span class="p">;</span>        <span class="c">/* Your brand color */</span>
+    <span class="py">--color-primary-dark</span><span class="p">:</span> <span class="m">#9A5F42</span><span class="p">;</span>   <span class="c">/* Darker variant */</span>
+    <span class="py">--content-max-width</span><span class="p">:</span> <span class="m">700px</span><span class="p">;</span>      <span class="c">/* Content width */</span>
+    <span class="py">--sidebar-width</span><span class="p">:</span> <span class="m">320px</span><span class="p">;</span>          <span class="c">/* Sidebar width */</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="adding-new-sections">Adding New Sections</h3>
+
+<ol>
+  <li>Create a new layout in <code class="language-plaintext highlighter-rouge">_layouts/</code></li>
+  <li>Add corresponding styles to <code class="language-plaintext highlighter-rouge">style.css</code></li>
+  <li>Create the markdown file with appropriate front matter</li>
+</ol>
+
+<h3 id="file-organization">File Organization</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">_layouts/</code>: HTML templates for different page types</li>
+  <li><code class="language-plaintext highlighter-rouge">_posts/</code>: Blog posts and articles</li>
+  <li><code class="language-plaintext highlighter-rouge">assets/</code>: Static files (CSS, images, PDFs)</li>
+  <li><code class="language-plaintext highlighter-rouge">_config.yml</code>: Site configuration</li>
+  <li>Root <code class="language-plaintext highlighter-rouge">.md</code> files: Main pages (cv.md, research.md, etc.)</li>
+</ul>
+
+<h2 id="deployment">Deployment</h2>
+
+<h3 id="github-pages">GitHub Pages</h3>
+
+<ol>
+  <li>Push your repository to GitHub</li>
+  <li>Go to Settings &gt; Pages</li>
+  <li>Select “Deploy from a branch”</li>
+  <li>Choose “main” branch and “/ (root)” folder</li>
+  <li>Your site will be available at <code class="language-plaintext highlighter-rouge">https://username.github.io/repository-name</code></li>
+</ol>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<ul>
+  <li><strong>Build errors</strong>: Check <code class="language-plaintext highlighter-rouge">_config.yml</code> syntax and front matter formatting</li>
+  <li><strong>Styling issues</strong>: Verify CSS file paths and variable names</li>
+  <li><strong>Math not rendering</strong>: Ensure MathJax configuration is correct in <code class="language-plaintext highlighter-rouge">default.html</code></li>
+  <li><strong>Images not loading</strong>: Check file paths and case sensitivity</li>
+</ul>
+
+<p>For more help, refer to the <a href="https://jekyllrb.com/docs/">Jekyll documentation</a>.</p>
+
+</article>
+
+<!-- Post Navigation -->
+<nav class="post-nav">
+  
+  <span></span>
+  
+
+  
+  <span></span>
+  
+</nav>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="site-footer" role="contentinfo">
+        <div class="footer-content">
+          <p>
+            © 2025 Paul Gondolf.
+            Built with <a href="https://jekyllrb.com/">Jekyll</a>,
+            hosted on <a href="https://pages.github.com/">GitHub Pages</a>
+            and inspired by <a href="https://castel.dev">Gilles Castel</a>.
+          </p>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+---
+layout: default
+---
+
+<!-- Page Header -->
+<header class="page-header">
+    <h1 class="page-title">{{ page.title | default: "Welcome" }}</h1>
+    {% if page.description %}
+    <p class="page-subtitle">{{ page.description }}</p>
+    {% endif %}
+</header>
+
+<!-- Main Content -->
+{% if content and content != empty %}
+<section class="content-section">
+    {{ content }}
+</section>
+{% endif %}
+
+<!-- Featured/Recent Posts -->
+{% assign sorted_posts = site.posts | sort: 'date' | reverse %}
+{% if sorted_posts and sorted_posts.size > 0 %}
+<section class="content-section">
+    <h2 id="recent-posts-heading" class="section-title">Posts</h2>
+    {% for post in sorted_posts %}
+    <article class="list-item">
+        <h2 class="list-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+        <div class="list-meta">
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
+            {% if post.reading_time %}
+            • {{ post.reading_time }} min read
+            {% endif %}
+            {% if post.author %}
+            • {{ post.author }}
+            {% endif %}
+        </div>
+        {% if post.excerpt %}
+        <div class="list-description">
+            {{ post.excerpt | strip_html }}
+        </div>
+        {% endif %}
+    </article>
+    {% endfor %}
+</section>
+{% endif %}

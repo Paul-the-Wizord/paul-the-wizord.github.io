@@ -1,0 +1,146 @@
+---
+layout: default
+---
+
+<header class="page-header">
+    <h1 class="page-title">{{ page.title }}</h1>
+    {% if page.description %}
+    {{page.description}}
+    {% endif %}
+</header>
+
+<!-- Published Papers Section -->
+{% if page.published_papers and page.published_papers.size > 0 %}
+<section class="content-section">
+    <h2 class="section-title">Published Papers</h2>
+    <div class="timeline">
+        {% for paper in page.published_papers %}
+        <div class="timeline-item">
+            <div class="timeline-date">{{ paper.year }}</div>
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+                <div class="paper-meta">
+                    <span class="paper-journal">{{ paper.journal }}</span>
+                    <span class="badge badge--published">Published</span>
+                </div>
+                <h3>{{ paper.title }}</h3>
+                <div class="paper-authors">
+                    {% for author in paper.authors %}
+                    {% if author.highlight %}
+                    <strong class="text-primary">{{ author.name }}</strong>
+                    {% else %}
+                    {{ author.name }}
+                    {% endif %}
+                    {% unless forloop.last %}, {% endunless %}
+                    {% endfor %}
+                </div>
+                <div class="paper-content">
+                    {% if paper.abstract %}
+                    <p class="{% if paper.award %} paper-abstract-award {% else %} paper-abstract {% endif %}">
+                        {{ paper.abstract }}
+                    </p>
+                    {% endif %}
+                    {% if paper.award %}
+                    <strong>Award:</strong>
+                    {% if paper.award.url %}
+                    <a href="{{ paper.award.url }}" class="link">{{ paper.award.title }}</a>
+                    {% else %}
+                    {{ paper.award.title }}
+                    {% endif %}
+                    {% if paper.award.description %} - {{ paper.award.description }}{% endif %}
+                    {% endif %}
+                </div>
+                {% if paper.links and paper.links.size > 0 %}
+                <div class="paper-links">
+                    {% for link in paper.links %}
+                    <a href="{{ link.url }}" class="btn">{{ link.text }}</a>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+<!-- Preprints Section -->
+{% if page.preprints and page.preprints.size > 0 %}
+<section class="content-section">
+    <h2 class="section-title">Preprints</h2>
+
+    <div class="timeline">
+        {% for paper in page.preprints %}
+        <div class="timeline-item">
+            <div class="timeline-date">{{ paper.year }}</div>
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+                <div class="paper-meta">
+                    <span class="paper-journal">{{ paper.status }}</span>
+                    <span class="badge badge--preprint">Preprint</span>
+                </div>
+                <h3>{{ paper.title }}</h3>
+                <div class="paper-authors">
+                    {% for author in paper.authors %}
+                    {% if author.highlight %}
+                    <strong class="text-primary">{{ author.name }}</strong>
+                    {% else %}
+                    {{ author.name }}
+                    {% endif %}
+                    {% unless forloop.last %}, {% endunless %}
+                    {% endfor %}
+                </div>
+                <div class="paper-content">
+                    {% if paper.abstract %}
+                    <p class="paper-abstract">
+                        {{ paper.abstract }}
+                    </p>
+                    {% endif %}
+                </div>
+                {% if paper.links and paper.links.size > 0 %}
+                <div class="paper-links">
+                    {% for link in paper.links %}
+                    <a href="{{ link.url }}" class="btn">{{ link.text }}</a>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+<!-- Research Interests Section -->
+{% if page.research_interests and page.research_interests.size > 0 %}
+<section class="content-section">
+    <h2 class="section-title">Research Interests</h2>
+
+    <div class="content-width">
+        <p> My research focuses on the mathematical foundations of quantum
+            information theory, with particular emphasis on: </p>
+        <div class="grid">
+            {% for interest in page.research_interests %}
+            <div>
+                <h4>{{ interest.area }}</h4>
+                <p>{{ interest.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Custom Content -->
+{% if content and content != empty %}
+<section class="content-section">
+    {{ content }}
+</section>
+{% endif %}
+
+<!-- Last Updated -->
+{% if page.last_updated %}
+<div class="last-updated">
+    Last update {{ page.last_updated }}
+</div>
+{% endif %}

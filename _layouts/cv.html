@@ -1,0 +1,146 @@
+---
+layout: default
+---
+
+<header class="page-header">
+    <h1 class="page-title">{{ page.title }}</h1>
+    {% if page.description %}
+    {{ page.description }}
+    {% endif %}
+</header>
+
+<!-- Education Section -->
+{% if page.education and page.education.size > 0 %}
+<section class="content-section">
+    <h2 class="section-title">Education</h2>
+
+    <div class="timeline">
+        {% for item in page.education %}
+        <div class="timeline-item">
+            <div class="timeline-date">{{ item.date }}</div>
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+                <h3>{{ item.degree }}</h3>
+                <div class="cv-institution">
+                    {% if item.institution_url %}
+                    <a href="{{ item.institution_url }}">{{ item.institution }}</a>
+                    {% else %}
+                    {{ item.institution }}
+                    {% endif %}
+                    {% if item.location %}, {{ item.location }}{% endif %}
+                </div>
+
+                {% if item.details and item.details.size > 0 %}
+                <div class="cv-details">
+                    {% for detail in item.details %}
+                    <p>
+                        {% if detail.label %}<strong>{{ detail.label }}:</strong> {% endif %}
+                        {% if detail.link %}
+                        <a href="{{ detail.link }}">{{ detail.text }}</a>
+                        {% else %}
+                        {{ detail.text }}
+                        {% endif %}
+                        {% if detail.note %} <em>{{ detail.note }}</em>{% endif %}
+                    </p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+<!-- Teaching Experience Section -->
+{% if page.teaching and page.teaching.size > 0 %}
+<section class="content-section">
+    <h2 class="section-title">Teaching Experience</h2>
+
+    <div class="teaching-section">
+        {% for item in page.teaching %}
+        <div class="teaching-item">
+            <div class="teaching-header">
+                <h3>{{ item.title }}</h3>
+                <span class="teaching-period">{{ item.period }}</span>
+            </div>
+
+            <div class="teaching-institution">
+                {% if item.institution_url %}
+                <a href="{{ item.institution_url }}">{{ item.institution }}</a>
+                {% else %}
+                {{ item.institution }}
+                {% endif %}
+                {% if item.location %}, {{ item.location }}{% endif %}
+            </div>
+
+            {% if item.responsibilities and item.responsibilities.size > 0 %}
+            <div class="teaching-description">
+                <ul>
+                    {% for responsibility in item.responsibilities %}
+                    <li>{{ responsibility }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+<!-- Work Experience Section -->
+{% if page.work and page.work.size > 0 %}
+<section class="content-section">
+    <h2 class="section-title">Work Experience</h2>
+
+    <div class="timeline">
+        {% for item in page.work %}
+        <div class="timeline-item">
+            <div class="timeline-date">{{ item.date }}</div>
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+                <h3>{{ item.position }}</h3>
+                <div class="cv-institution">
+                    {% if item.company_url %}
+                    <a href="{{ item.company_url }}">{{ item.company }}</a>
+                    {% else %}
+                    {{ item.company }}
+                    {% endif %}
+                    {% if item.location %}, {{ item.location }}{% endif %}
+                </div>
+
+                {% if item.description %}
+                <p class="timeline-details">{{ item.description }}</p>
+                {% endif %}
+
+                {% if item.achievements and item.achievements.size > 0 %}
+                <div class="timeline-details">
+                    <ul>
+                        {% for achievement in item.achievements %}
+                        <li>{{ achievement }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+
+<!-- Custom Content -->
+{% if content and content != empty %}
+<section class="content-section">
+    {{ content }}
+</section>
+{% endif %}
+
+<!-- Last Updated -->
+{% if page.last_updated %}
+<div class="last-updated">
+    Last update {{ page.last_updated }}
+</div>
+{% endif %}
