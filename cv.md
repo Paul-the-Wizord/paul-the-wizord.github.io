@@ -3,7 +3,7 @@ layout: cv
 title: Curriculum Vitae
 permalink: /cv/
 last_updated: August 2025
-description: This page list my higher education some teaching experience and is yet to be filled with work experiences outside the academic context.
+description: This page lists my higher education some teaching experience and is yet to be filled with work experiences outside the academic context.
 
 education:
   - date: Present
