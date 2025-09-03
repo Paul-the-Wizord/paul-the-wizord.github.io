@@ -2,7 +2,7 @@
 layout: post
 title: "How to setup a similar page"
 date: 2025-09-03
-author: Paul Gondolf (with the help of Claude)
+author: "Paul Gondolf (with the help of Claude)"
 excerpt: "A guide to setting up and customizing this Jekyll-based academic website template."
 ---
 
@@ -41,15 +41,28 @@ This guide explains how to set up and customize this Jekyll-based website templa
 Update the main configuration file with your information:
 
 ```yaml
+baseurl: "/websitereponame" # the subpath of your site (the repo name)
+url: "https://yourusername.github.io" # the base hostname & protocol for your site
 title: "Your Name"
-email: your.email@example.com
+email: "your.email@example.com"
 description: >-
   Your professional description here.
 url: "https://yourusername.github.io"
-github_username: your-github-username
-orcid_id: 0000-0000-0000-0000
-email_user: your-email-username
-email_domain: example.com
+github_username: "your-github-username"
+orcid_id: "0000-0000-0000-0000"
+email_user: "youremailusername"
+email_domain: "example.com"
+```
+
+Of course you should also update the cv.md, index.md, lecture_notes.md, research.md and talks.md with your own information.
+
+In the robots.txt you should change the link to the Sitemap and also set your privacy settings.
+
+```txt
+User-agent: *
+Allow: /
+
+Sitemap: https://yourusername.github.io/websitereponame/sitemap.xml
 ```
 
 ## Page Templates & Usage
@@ -61,44 +74,45 @@ The CV template supports structured data for education, teaching, and work exper
 ```yaml
 ---
 layout: cv
-title: Curriculum Vitae
+title: "Curriculum Vitae"
 permalink: /cv/
-last_updated: August 2025
+last_updated: "August 2025"
 
 education:
-  - date: Present
-    degree: PhD in Mathematics
-    institution: University Name
-    institution_url: https://university.edu/
-    location: City, Country
+  - date: "Present"
+    degree: "PhD in Mathematics"
+    institution: "University Name"
+    institution_url: "https://university.edu/"
+    location: "City, Country"
     details:
-      - label: Expected Graduation
-        text: Month Year
-      - label: Thesis
+      - label: "Expected Graduation"
+        text: "Month Year"
+      - label: "Thesis"
         text: "Your thesis title"
-        link: /path/to/thesis.pdf
-      - label: Research Focus
-        text: Your research area
+        file: "/path/to/thesis.pdf" # or 
+        url: "https://url-to-your-thesis.com"
+      - label: "Research Focus"
+        text: "Your research area"
 
 teaching:
-  - title: Course Title
-    period: 2022 - 2024
-    institution: University Name
-    institution_url: https://university.edu/
+  - title: "Course Title"
+    period: "2022 - 2024"
+    institution: "University Name"
+    institution_url: "https://university.edu/"
     responsibilities:
-      - Responsibility 1
-      - Responsibility 2
+      - "Responsibility 1"
+      - "Responsibility 2"
 
 work:
-  - date: 2021-2022
-    position: Job Title
-    company: Company Name
-    company_url: https://company.com/
-    location: City, Country
-    description: Brief job description
+  - date: "2021-2022"
+    position: "Job Title"
+    company: "Company Name"
+    company_url: "https://company.com/"
+    location: "City, Country"
+    description: "Brief job description"
     achievements:
-      - Achievement 1
-      - Achievement 2
+      - "Achievement 1"
+      - "Achievement 2"
 ---
 ```
 
@@ -109,9 +123,9 @@ The research template organizes publications and preprints:
 ```yaml
 ---
 layout: research
-title: Research
+title: "Research"
 permalink: /research/
-description: Brief description of your research
+description: "Brief description of your research"
 
 published_papers:
   - title: "Paper Title"
@@ -136,9 +150,9 @@ preprints:
   - title: "Preprint Title"
     status: "Submitted to Journal Name"
     year: 2024
-    authors: [same format as above]
+    authors: # [same format as above]
     abstract: "Abstract..."
-    links: [same format as above]
+    links: # [same format as above]
 
 research_interests:
   - area: "Research Area 1"
@@ -155,9 +169,9 @@ Create a talks page following this structure:
 ```yaml
 ---
 layout: talks
-title: Talks
+title: "Talks"
 permalink: /talks/
-description: Conference presentations and seminars
+description: "Conference presentations and seminars"
 
 talks:
   - title: "Talk Title"
@@ -169,7 +183,8 @@ talks:
     description: "Talk abstract..." # or summary, etc.
     links:
       - text: "Slides"
-        url: "/path/to/slides.pdf"
+        file: "/path/to/slides.pdf" # or 
+        url: "https://url-to-slides.com"
       - text: "Video"
         url: "https://youtube.com/..."
 ---
@@ -182,9 +197,9 @@ Structure for course materials:
 ```yaml
 ---
 layout: lecture_notes
-title: Lecture Notes
+title: "Lecture Notes"
 permalink: /lecture-notes/
-description: Course materials and educational resources
+description: "Course materials and educational resources"
 
 courses:
   - title: "Course Name"
@@ -211,7 +226,7 @@ Blog posts go in the `_posts/` directory with the naming convention: `YYYY-MM-DD
 layout: post
 title: "Your Post Title"
 date: 2025-08-30
-author: Your Name
+author: "Your Name"
 excerpt: "Brief description for previews"
 reading_time: 5  # Optional: estimated reading time in minutes
 ---
@@ -250,11 +265,45 @@ Modify CSS variables in `assets/css/style.css`:
 
 ### File Organization
 
+Your Jekyll site should be organized as follows:
+
+```
+your-academic-website/
+├── _config.yml              # Site configuration
+├── _layouts/                # HTML templates for different page types
+│   ├── default.html
+│   ├── cv.html
+│   ├── research.html
+│   ├── talks.html
+│   ├── lecture_notes.html
+│   └── post.html
+├── _posts/                  # Blog posts and articles
+│   └── 2025-09-03-how-to-setup.md
+├── assets/                  # Static files
+│   ├── css/
+│   │   └── style.css
+│   ├── images/
+│   │   └── profile.jpg
+│   └── files/               # PDFs, slides, etc.
+│       ├── cv.pdf
+│       ├── thesis.pdf
+│       └── slides/
+├── index.md                 # Homepage
+├── cv.md                    # CV page
+├── research.md              # Research page
+├── talks.md                 # Talks page
+├── lecture_notes.md         # Lecture notes page
+├── robots.txt              # Search engine instructions
+├── Gemfile                 # Ruby dependencies
+└── README.md               # Repository documentation
+```
+
+**Key Directories:**
+
 - `_layouts/`: HTML templates for different page types
-- `_posts/`: Blog posts and articles
+- `_posts/`: Blog posts and articles (named YYYY-MM-DD-title.md)
 - `assets/`: Static files (CSS, images, PDFs)
-- `_config.yml`: Site configuration
-- Root `.md` files: Main pages (cv.md, research.md, etc.)
+- Root `.md` files: Main pages accessible via navigation
 
 ## Deployment
 

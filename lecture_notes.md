@@ -13,7 +13,7 @@ lecture_notes:
         - "Winter term 2020"
       links:
         - text: PDF
-          file: "/assets/lecture-notes/preparatory_course_msc_mathematical_physics.pdf"
+          file: "/assets/files/preparatory_course_msc_mathematical_physics.pdf"
     - title: Analysis III
       meta:
         - "German"
@@ -21,5 +21,5 @@ lecture_notes:
         - "Summer term 2019"
       links:
         - text: PDF
-          file: "/assets/lecture-notes/analysis_III.pdf"
+          file: "/assets/files/analysis_III.pdf"
 ---
