@@ -74,7 +74,7 @@ published_papers:
     award:
       title: "Jack Keil Wolf ISIT Student Paper Award 2023"
       url: "https://www.itsoc.org/honors/wolf-award"
-      description: "Awarded by the IEEE Information Theory Society for the conference version of this work"
+      description: "Awarded to me by the IEEE Information Theory Society for the conference version of this work"
     links:
       - text: "arXiv:2208.00922"
         url: "https://arxiv.org/abs/2208.00922"
