@@ -27,7 +27,11 @@ layout: default
         {% if lecture_note.links and lecture_note.links.size > 0 %}
         <div>
             {% for link in lecture_note.links %}
-            <a href="{{ link.url }}" class="btn">{{ link.text }}</a>
+            {% if link.url %}
+            <a href="{{ link.url}}" class="btn">{{ link.text }}</a>
+            {% elsif link.file %}
+            <a href="{{ link.file | relative_url }}" class="btn">{{ link.text }}</a>
+            {% endif %}
             {% endfor %}
         </div>
         {% endif %}

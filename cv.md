@@ -30,7 +30,7 @@ education:
     details:
       - label: Thesis
         text: "Continuity of quantum entropic quantities via almost convexity"
-        link: /assets/theses/gondolf_master_thesis.pdf
+        file: /assets/theses/gondolf_master_thesis.pdf
       - label: Curriculum
         text: "Geometry in Physics, Mathematical Quantum Theory, Mathematical Relativity, Groups and Representations, Quantum Field Theory, Seminar: Effective Description of Many Body Systems, Advanced Topics in Quantum Theory, Convex Analysis and Optimisation, Elliptic Curves and Cryptography, Quantum Shannon Theory and Beyond"
 
@@ -42,7 +42,7 @@ education:
     details:
       - label: Thesis
         text: "Analysis of a traffic scenario based on autonomous driving datasets"
-        link: /assets/theses/gondolf_bachelor_thesis.pdf
+        file: /assets/theses/gondolf_bachelor_thesis.pdf
       - label: Curriculum
         text: "Theoretical Physics I-IV, Methods of Mathematical Physics, Theoretical Quantum Statistics, Experimental Physics I-V, Analysis I-III, Linear Algebra I-II, Beginner Lab I-II, Advanced Lab I-II, Introduction to Practical Informatics, C++ Basics, Machine Learning"
 

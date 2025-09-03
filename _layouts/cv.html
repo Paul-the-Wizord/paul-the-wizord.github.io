@@ -35,8 +35,10 @@ layout: default
                     {% for detail in item.details %}
                     <p>
                         {% if detail.label %}<strong>{{ detail.label }}:</strong> {% endif %}
-                        {% if detail.link %}
-                        <a href="{{ detail.link }}">{{ detail.text }}</a>
+                        {% if detail.url %}
+                        <a href="{{ detail.url }}">{{ detail.text }}</a>
+                        {% elsif detail.file %}
+                        <a href="{{ detail.file | relative_url }}">{{ detail.text }}</a>
                         {% else %}
                         {{ detail.text }}
                         {% endif %}
