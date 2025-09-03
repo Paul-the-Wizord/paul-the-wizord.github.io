@@ -29,11 +29,14 @@ Edit `_config.yml` with your information:
 
 ```yaml
 title: "Your Name"
-email: "your.email@example.com"
-baseurl: "/your-repo-name"
+baseurl: "/your-repo-name" # For Github deployment set to repo-name for local deployment set to ""
 url: "https://yourusername.github.io"
-github_username: "your-github-username"
-baseurl: "" # For Github deployment set to repo-name for local deployment set to ""
+
+# Social media usernames (without @ symbol)
+github_username: github-user name
+orcid_id: 0000-0000-0000-0000
+email_user: email-name
+email_domain: example.com
 ```
 
 Update content files (cv.md, research.md, talks.md, etc.) and replace the profile image in `/assets/images/profile.jpg` as well as the favicon files.
