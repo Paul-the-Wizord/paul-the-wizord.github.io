@@ -11,6 +11,10 @@ orcid_id: 0000-0002-5862-5391
 email_user: paul.gondolf.work
 email_domain: gmail.com
 
+# Credit
+credit-title: "Gilles Castel"
+credit-url: "https://castel.dev/"
+
 # Build settings
 markdown: kramdown
 highlighter: rouge

@@ -42,17 +42,23 @@ This guide explains how to set up and customize this Jekyll-based website templa
 Update the main configuration file with your information:
 
 ```yaml
-baseurl: "/websitereponame" # the subpath of your site (the repo name)
-url: "https://yourusername.github.io" # the base hostname & protocol for your site
+# Site settings
 title: "Your Name"
-email: "your.email@example.com"
 description: >-
   Your professional description here.
-url: "https://yourusername.github.io"
+baseurl: "/websitereponame" # the subpath of your site (the repo name)
+url: "https://yourusername.github.io" # the base hostname & protocol for your site
+
+# Social media usernames (without @ symbol)
+email: "your.email@example.com"
 github_username: "your-github-username"
 orcid_id: "0000-0000-0000-0000"
 email_user: "youremailusername"
 email_domain: "example.com"
+
+# Credit :) 
+credit-title: "Paul Gondolf"
+credit-url: "https://paul-the-wizord.github.io/website/"
 ```
 
 Of course you should also update the cv.md, index.md, lecture_notes.md, research.md and talks.md with your own information.

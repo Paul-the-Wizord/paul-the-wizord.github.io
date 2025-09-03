@@ -28,15 +28,23 @@ Visit `http://localhost:4000` to see your site.
 Edit `_config.yml` with your information:
 
 ```yaml
+# Site settings
 title: "Your Name"
-baseurl: "/your-repo-name" # For Github deployment set to repo-name for local deployment set to ""
-url: "https://yourusername.github.io"
+description: >-
+  Your professional description here.
+baseurl: "/websitereponame" # For Github deployment set to repo-name for local deployment set to ""
+url: "https://yourusername.github.io" # the base hostname & protocol for your site
 
 # Social media usernames (without @ symbol)
-github_username: github-user name
-orcid_id: 0000-0000-0000-0000
-email_user: email-name
-email_domain: example.com
+email: "your.email@example.com"
+github_username: "your-github-username"
+orcid_id: "0000-0000-0000-0000"
+email_user: "youremailusername"
+email_domain: "example.com"
+
+# Credit :) 
+credit-title: "Paul Gondolf"
+credit-url: "https://paul-the-wizord.github.io/website/"
 ```
 
 Update content files (cv.md, research.md, talks.md, etc.) and replace the profile image in `/assets/images/profile.jpg` as well as the favicon files.
