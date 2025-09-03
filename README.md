@@ -48,4 +48,10 @@ For complete setup instructions, customization options, and usage examples, visi
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project uses a dual licensing approach:
+
+- **Template & Code**: Licensed under the MIT License - see [LICENSE-CODE](LICENSE-CODE)
+- **Personal Content**: All rights reserved - see [LICENSE-CONTENT](LICENSE-CONTENT)
+
+The Jekyll template, layouts, and styling may be freely used. Personal content
+(CV, research info, photos) requires permission.
