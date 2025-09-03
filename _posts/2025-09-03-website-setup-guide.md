@@ -45,7 +45,7 @@ Update the main configuration file with your information:
 # Site settings
 title: "Your Name"
 description: >-
-  Your professional description here.
+  "Your professional description here."
 baseurl: "/websitereponame" # the subpath of your site (the repo name)
 url: "https://yourusername.github.io" # the base hostname & protocol for your site
 
