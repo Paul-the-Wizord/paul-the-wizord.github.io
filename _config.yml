@@ -1,0 +1,60 @@
+# Site settings
+title: "Paul Gondolf"
+description: >- # this means to ignore newlines until "baseurl:"
+  Mathematics PhD student at University of Tübingen. Interested in (quantum) information theory, statistics, mathematical physics, software development and machine learning.
+baseurl: "/website" # the subpath of your site (the repo name)
+url: "https://paul-the-wizord.github.io" # the base hostname & protocol for your site
+
+# Social media usernames (without @ symbol)
+github_username: Paul-the-Wizord
+orcid_id: 0000-0002-5862-5391
+email_user: paul.gondolf.work
+email_domain: gmail.com
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+
+# Kramdown settings for math
+kramdown:
+  math_engine: mathjax
+  syntax_highlighter: rouge
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Exclude from processing
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /post/:name/
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Paul Gondolf"
+
+# Pagination
+paginate: 10
+paginate_path: "/page/:num/"
