@@ -49,16 +49,3 @@ collections:
   posts:
     output: true
     permalink: /post/:name/
-
-# Default front matter
-defaults:
-  - scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "post"
-      author: "Paul Gondolf"
-
-# Pagination
-paginate: 10
-paginate_path: "/page/:num/"

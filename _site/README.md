@@ -31,8 +31,8 @@ Edit `_config.yml` with your information:
 # Site settings
 title: "Your Name"
 description: >-
-  Your professional description here.
-baseurl: "/websitereponame" # For Github deployment set to repo-name for local deployment set to ""
+  "Your professional description here."
+baseurl: "/websitereponame" # for Github deployment: repo name, for local deployment: ""
 url: "https://yourusername.github.io" # the base hostname & protocol for your site
 
 # Social media usernames (without @ symbol)
