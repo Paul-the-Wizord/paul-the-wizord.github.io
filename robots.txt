@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://paul-the-wizord.github.io/website/sitemap.xml
+Sitemap: https://paul-the-wizord.github.io/sitemap.xml
