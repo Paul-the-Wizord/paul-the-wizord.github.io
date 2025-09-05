@@ -2,7 +2,7 @@
 layout: talks
 title: Talks
 permalink: /talks/
-last_updated: August 2025
+last_updated: September 2025
 description: This page lists some of the talks I gave in my masters and PhD.
 
 talks:
