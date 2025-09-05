@@ -58,7 +58,7 @@ email_domain: "example.com"
 
 # Credit :) 
 credit-title: "Paul Gondolf"
-credit-url: "https://paul-the-wizord.github.io/website/"
+credit-url: "https://paul-the-wizord.github.io"
 
 # If using _pages folder (optional)
 collections:
