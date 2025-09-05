@@ -46,6 +46,18 @@ exclude:
 
 # Collections
 collections:
+  pages:
+    output: true
+    permalink: /:name/
   posts:
     output: true
     permalink: /post/:name/
+
+# Default
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  

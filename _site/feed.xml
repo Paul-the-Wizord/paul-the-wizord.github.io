@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/website/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/website/" rel="alternate" type="text/html" /><updated>2025-09-04T12:09:53+02:00</updated><id>http://localhost:4000/website/feed.xml</id><title type="html">Paul Gondolf</title><subtitle>Mathematics PhD student at University of Tübingen. Interested in (quantum) information theory, statistics, mathematical physics, software development and machine learning.</subtitle><entry><title type="html">How to setup a similar page</title><link href="http://localhost:4000/website/post/2025-09-03-website-setup-guide/" rel="alternate" type="text/html" title="How to setup a similar page" /><published>2025-09-03T00:00:00+02:00</published><updated>2025-09-03T00:00:00+02:00</updated><id>http://localhost:4000/website/post/website-setup-guide</id><content type="html" xml:base="http://localhost:4000/website/post/2025-09-03-website-setup-guide/"><![CDATA[<p>This guide explains how to set up and customize this Jekyll-based website template.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/website/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/website/" rel="alternate" type="text/html" /><updated>2025-09-05T10:27:47+02:00</updated><id>http://localhost:4000/website/feed.xml</id><title type="html">Paul Gondolf</title><subtitle>Mathematics PhD student at University of Tübingen. Interested in (quantum) information theory, statistics, mathematical physics, software development and machine learning.</subtitle><entry><title type="html">How to setup a similar page</title><link href="http://localhost:4000/website/post/2025-09-03-website-setup-guide/" rel="alternate" type="text/html" title="How to setup a similar page" /><published>2025-09-03T00:00:00+02:00</published><updated>2025-09-03T00:00:00+02:00</updated><id>http://localhost:4000/website/post/website-setup-guide</id><content type="html" xml:base="http://localhost:4000/website/post/2025-09-03-website-setup-guide/"><![CDATA[<p>This guide explains how to set up and customize this Jekyll-based website template.</p>
 
 <h2 id="quick-start">Quick Start</h2>
 
@@ -54,6 +54,19 @@
 <span class="c1"># Credit :) </span>
 <span class="na">credit-title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Paul</span><span class="nv"> </span><span class="s">Gondolf"</span>
 <span class="na">credit-url</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://paul-the-wizord.github.io/website/"</span>
+
+<span class="c1"># If using _pages folder (optional)</span>
+<span class="na">collections</span><span class="pi">:</span>
+  <span class="na">pages</span><span class="pi">:</span>
+    <span class="na">output</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="na">permalink</span><span class="pi">:</span> <span class="s">/:name/</span>
+
+<span class="na">defaults</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
+      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+      <span class="na">type</span><span class="pi">:</span> <span class="s2">"</span><span class="s">pages"</span>
+    <span class="na">values</span><span class="pi">:</span>
+      <span class="na">layout</span><span class="pi">:</span> <span class="s2">"</span><span class="s">default"</span>
 </code></pre></div></div>
 
 <p>Of course you should also update the cv.md, index.md, lecture_notes.md, research.md and talks.md with your own information.</p>
@@ -197,7 +210,7 @@ Sitemap: https://yourusername.github.io/websitereponame/sitemap.xml
 <span class="nn">---</span>
 </code></pre></div></div>
 
-<h3 id="lecture-notes-page-lecture_notesmd">Lecture Notes Page (lecture_notes.md)</h3>
+<h3 id="lecture-notes-page-_pageslecture_notesmd">Lecture Notes Page (_pages/lecture_notes.md)</h3>
 
 <p>Structure for course materials:</p>
 
@@ -284,6 +297,12 @@ Sitemap: https://yourusername.github.io/websitereponame/sitemap.xml
 │   └── post.html
 ├── _posts/                  # Blog posts and articles
 │   └── 2025-09-03-how-to-setup.md
+├── _pages/                  # Pages (.md files)
+│   ├── index.md             # Homepage
+│   ├── cv.md                # CV page
+│   ├── research.md          # Research page
+│   ├── talks.md             # Talks page
+│   └── lecture_notes.md     # Lecture notes page
 ├── assets/                  # Static files
 │   ├── css/
 │   │   └── style.css
@@ -293,11 +312,6 @@ Sitemap: https://yourusername.github.io/websitereponame/sitemap.xml
 │       ├── cv.pdf
 │       ├── thesis.pdf
 │       └── slides/
-├── index.md                 # Homepage
-├── cv.md                    # CV page
-├── research.md              # Research page
-├── talks.md                 # Talks page
-├── lecture_notes.md         # Lecture notes page
 ├── robots.txt              # Search engine instructions
 ├── Gemfile                 # Ruby dependencies
 └── README.md               # Repository documentation
@@ -308,6 +322,7 @@ Sitemap: https://yourusername.github.io/websitereponame/sitemap.xml
 <ul>
   <li><code class="language-plaintext highlighter-rouge">_layouts/</code>: HTML templates for different page types</li>
   <li><code class="language-plaintext highlighter-rouge">_posts/</code>: Blog posts and articles (named YYYY-MM-DD-title.md)</li>
+  <li><code class="language-plaintext highlighter-rouge">_pages/</code>: Md files for front matter</li>
   <li><code class="language-plaintext highlighter-rouge">assets/</code>: Static files (CSS, images, PDFs)</li>
   <li>Root <code class="language-plaintext highlighter-rouge">.md</code> files: Main pages accessible via navigation</li>
 </ul>
@@ -323,6 +338,29 @@ Sitemap: https://yourusername.github.io/websitereponame/sitemap.xml
   <li>Choose “main” branch and “/ (root)” folder</li>
   <li>Your site will be available at <code class="language-plaintext highlighter-rouge">https://username.github.io/repository-name</code></li>
 </ol>
+
+<h3 id="serving-at-root-domain-optional">Serving at Root Domain (Optional)</h3>
+
+<p>To serve your site at <code class="language-plaintext highlighter-rouge">yourusername.github.io</code> instead of <code class="language-plaintext highlighter-rouge">yourusername.github.io/repository-name</code>:</p>
+
+<ol>
+  <li><strong>Rename your repository</strong> to <code class="language-plaintext highlighter-rouge">yourusername.github.io</code> (must match your GitHub username exactly)</li>
+  <li>
+    <p>Update your <code class="language-plaintext highlighter-rouge">_config.yml</code>:</p>
+
+    <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">baseurl</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>  <span class="c1"># Leave empty for root domain</span>
+<span class="na">url</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://yourusername.github.io"</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Update your <code class="language-plaintext highlighter-rouge">robots.txt</code>:</p>
+
+    <pre><code class="language-txt">Sitemap: https://yourusername.github.io/sitemap.xml
+</code></pre>
+  </li>
+</ol>
+
+<p>Note: You can only have one <code class="language-plaintext highlighter-rouge">username.github.io</code> repository per GitHub account.</p>
 
 <h2 id="troubleshooting">Troubleshooting</h2>
 

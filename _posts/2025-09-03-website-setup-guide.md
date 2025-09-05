@@ -59,6 +59,19 @@ email_domain: "example.com"
 # Credit :) 
 credit-title: "Paul Gondolf"
 credit-url: "https://paul-the-wizord.github.io/website/"
+
+# If using _pages folder (optional)
+collections:
+  pages:
+    output: true
+    permalink: /:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
 ```
 
 Of course you should also update the cv.md, index.md, lecture_notes.md, research.md and talks.md with your own information.
@@ -204,7 +217,7 @@ talks:
 ---
 ```
 
-### Lecture Notes Page (lecture_notes.md)
+### Lecture Notes Page (_pages/lecture_notes.md)
 
 Structure for course materials:
 
@@ -293,6 +306,12 @@ your-academic-website/
 │   └── post.html
 ├── _posts/                  # Blog posts and articles
 │   └── 2025-09-03-how-to-setup.md
+├── _pages/                  # Pages (.md files)
+│   ├── index.md             # Homepage
+│   ├── cv.md                # CV page
+│   ├── research.md          # Research page
+│   ├── talks.md             # Talks page
+│   └── lecture_notes.md     # Lecture notes page
 ├── assets/                  # Static files
 │   ├── css/
 │   │   └── style.css
@@ -302,11 +321,6 @@ your-academic-website/
 │       ├── cv.pdf
 │       ├── thesis.pdf
 │       └── slides/
-├── index.md                 # Homepage
-├── cv.md                    # CV page
-├── research.md              # Research page
-├── talks.md                 # Talks page
-├── lecture_notes.md         # Lecture notes page
 ├── robots.txt              # Search engine instructions
 ├── Gemfile                 # Ruby dependencies
 └── README.md               # Repository documentation
@@ -316,6 +330,7 @@ your-academic-website/
 
 - `_layouts/`: HTML templates for different page types
 - `_posts/`: Blog posts and articles (named YYYY-MM-DD-title.md)
+- `_pages/`: Md files for front matter
 - `assets/`: Static files (CSS, images, PDFs)
 - Root `.md` files: Main pages accessible via navigation
 
@@ -328,6 +343,26 @@ your-academic-website/
 3. Select "Deploy from a branch"
 4. Choose "main" branch and "/ (root)" folder
 5. Your site will be available at `https://username.github.io/repository-name`
+
+### Serving at Root Domain (Optional)
+
+To serve your site at `yourusername.github.io` instead of `yourusername.github.io/repository-name`:
+
+1. **Rename your repository** to `yourusername.github.io` (must match your GitHub username exactly)
+2. Update your `_config.yml`:
+
+   ```yaml
+   baseurl: ""  # Leave empty for root domain
+   url: "https://yourusername.github.io"
+   ```
+
+3. Update your `robots.txt`:
+
+   ```txt
+   Sitemap: https://yourusername.github.io/sitemap.xml
+   ```
+
+Note: You can only have one `username.github.io` repository per GitHub account.
 
 ## Troubleshooting
 
