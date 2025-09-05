@@ -59,19 +59,6 @@ email_domain: "example.com"
 # Credit :) 
 credit-title: "Paul Gondolf"
 credit-url: "https://paul-the-wizord.github.io"
-
-# If using _pages folder (optional)
-collections:
-  pages:
-    output: true
-    permalink: /:name/
-
-defaults:
-  - scope:
-      path: ""
-      type: "pages"
-    values:
-      layout: "default"
 ```
 
 Of course you should also update the cv.md, index.md, lecture_notes.md, research.md and talks.md with your own information.
