@@ -15,10 +15,10 @@ Personal content is copyrighted and requires permission to use
     content="A guide to setting up and customizing this Jekyll-based academic website template.">
 
   <!-- Canonical URL -->
-  <link rel="canonical" href="http://localhost:4000/website/post/2025-09-03-website-setup-guide/">
+  <link rel="canonical" href="http://localhost:4000/post/2025-09-03-website-setup-guide/">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="/website/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,9 +26,9 @@ Personal content is copyrighted and requires permission to use
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/website/assets/images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="64x64" href="/website/assets/images/favicon-64x64.png">
-  <link rel="icon" type="image/png" sizes="128x128" href="/website/assets/images/favicon-128x128.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="/assets/images/favicon-128x128.png">
 
   <!-- MathJax Configuration -->
   <script>
@@ -57,7 +57,7 @@ Personal content is copyrighted and requires permission to use
         <!-- Profile Section -->
         <div class="profile">
           <div class="profile-image">
-            <img src="/website/assets/images/profile.png" alt="Paul Gondolf profile picture"
+            <img src="/assets/images/profile.png" alt="Paul Gondolf profile picture"
               loading="lazy">
           </div>
           <h1 class="profile-name">Paul Gondolf</h1>
@@ -87,20 +87,20 @@ Personal content is copyrighted and requires permission to use
 
         <!-- Navigation -->
         <nav class="sidebar-nav" role="navigation" aria-label="Main navigation">
-          <a href="/website/" class="" >
+          <a href="/" class="" >
             Home
           </a>
-          <a href="/website/research/" class=""
+          <a href="/research/" class=""
             >
             Research
           </a>
-          <a href="/website/cv/" class="" >
+          <a href="/cv/" class="" >
             CV
           </a>
-          <a href="/website/talks/" class="" >
+          <a href="/talks/" class="" >
             Talks
           </a>
-          <a href="/website/lecture-notes/"
+          <a href="/lecture-notes/"
             class="" >
             Lecture Notes
           </a>
@@ -182,20 +182,7 @@ Personal content is copyrighted and requires permission to use
 
 <span class="c1"># Credit :) </span>
 <span class="na">credit-title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Paul</span><span class="nv"> </span><span class="s">Gondolf"</span>
-<span class="na">credit-url</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://paul-the-wizord.github.io/website/"</span>
-
-<span class="c1"># If using _pages folder (optional)</span>
-<span class="na">collections</span><span class="pi">:</span>
-  <span class="na">pages</span><span class="pi">:</span>
-    <span class="na">output</span><span class="pi">:</span> <span class="no">true</span>
-    <span class="na">permalink</span><span class="pi">:</span> <span class="s">/:name/</span>
-
-<span class="na">defaults</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
-      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
-      <span class="na">type</span><span class="pi">:</span> <span class="s2">"</span><span class="s">pages"</span>
-    <span class="na">values</span><span class="pi">:</span>
-      <span class="na">layout</span><span class="pi">:</span> <span class="s2">"</span><span class="s">default"</span>
+<span class="na">credit-url</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://paul-the-wizord.github.io"</span>
 </code></pre></div></div>
 
 <p>Of course you should also update the cv.md, index.md, lecture_notes.md, research.md and talks.md with your own information.</p>
@@ -453,7 +440,6 @@ Sitemap: https://yourusername.github.io/websitereponame/sitemap.xml
   <li><code class="language-plaintext highlighter-rouge">_posts/</code>: Blog posts and articles (named YYYY-MM-DD-title.md)</li>
   <li><code class="language-plaintext highlighter-rouge">_pages/</code>: Md files for front matter</li>
   <li><code class="language-plaintext highlighter-rouge">assets/</code>: Static files (CSS, images, PDFs)</li>
-  <li>Root <code class="language-plaintext highlighter-rouge">.md</code> files: Main pages accessible via navigation</li>
 </ul>
 
 <h2 id="deployment">Deployment</h2>
