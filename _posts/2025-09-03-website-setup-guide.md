@@ -319,7 +319,6 @@ your-academic-website/
 - `_posts/`: Blog posts and articles (named YYYY-MM-DD-title.md)
 - `_pages/`: Md files for front matter
 - `assets/`: Static files (CSS, images, PDFs)
-- Root `.md` files: Main pages accessible via navigation
 
 ## Deployment
 

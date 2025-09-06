@@ -44,7 +44,7 @@ email_domain: "example.com"
 
 # Credit :) 
 credit-title: "Paul Gondolf"
-credit-url: "https://paul-the-wizord.github.io/website/"
+credit-url: "https://paul-the-wizord.github.io"
 ```
 
 Update content files (cv.md, research.md, talks.md, etc.) and replace the profile image in `/assets/images/profile.jpg` as well as the favicon files.
