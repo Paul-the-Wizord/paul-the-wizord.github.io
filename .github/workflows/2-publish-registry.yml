@@ -62,7 +62,6 @@ jobs:
           # Origin registry protocol uses extensionless paths: /versions and /download/:os/:arch
           VERSIONS_FILE="$PROVIDER_DIR/versions"
           VERSIONS_BLOCK=""
-          PLATFORMS_BLOCK='{"os":"linux","arch":"amd64"}'
 
           while IFS= read -r TAG; do
             [ -z "$TAG" ] && continue
@@ -70,28 +69,31 @@ jobs:
             echo "Processing version $VER"
 
             ASSETS="$(gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json assets -q '.assets')"
-            ZIP_URL="$(echo "$ASSETS" | jq -r '.[] | select(.name | endswith("_linux_amd64.zip")) | .url')"
             SUMS_URL="$(echo "$ASSETS" | jq -r '.[] | select(.name=="SHA256SUMS") | .url')"
             SIG_URL="$(echo "$ASSETS" | jq -r '.[] | select(.name=="SHA256SUMS.sig") | .url')"
-            ZIP_NAME="$(echo "$ASSETS" | jq -r '.[] | select(.name | endswith("_linux_amd64.zip")) | .name')"
 
-            if [ -z "$ZIP_URL" ] || [ "$ZIP_URL" = "null" ]; then
-              echo "::warning::No linux/amd64 zip asset for $TAG; skipping"
-              continue
-            fi
-
-            # Fetch SHA256SUMS to extract the hash for this zip
+            # Fetch SHA256SUMS content for hash extraction
             SUMS_CONTENT="$(gh release download "$TAG" --repo "$GITHUB_REPOSITORY" --pattern "SHA256SUMS" --output - 2>/dev/null || true)"
-            SHASUM="$(echo "$SUMS_CONTENT" | awk -v f="$ZIP_NAME" '$2==f {print $1}')"
 
-            # Per-version download JSON
-            VERSION_DIR="$PROVIDER_DIR/$VER/download/linux"
-            mkdir -p "$VERSION_DIR"
-            cat > "$VERSION_DIR/amd64" <<JSON
+            # Iterate over all zip assets for this release (one per platform)
+            PLATFORMS_FOR_VERSION=""
+            while IFS=$'\t' read -r ZIP_NAME ZIP_URL; do
+              [ -z "$ZIP_NAME" ] && continue
+              # Parse OS and arch from filename: terraform-provider-hello_<ver>_<os>_<arch>.zip
+              OS="$(echo "$ZIP_NAME" | sed -E 's/.*_([a-z]+)_[a-z0-9]+\.zip$/\1/')"
+              ARCH="$(echo "$ZIP_NAME" | sed -E 's/.*_([a-z0-9]+)\.zip$/\1/')"
+              echo "  Platform: $OS/$ARCH ($ZIP_NAME)"
+
+              SHASUM="$(echo "$SUMS_CONTENT" | awk -v f="$ZIP_NAME" '$2==f {print $1}')"
+
+              # Per-platform download JSON (extensionless path)
+              PLATFORM_DIR="$PROVIDER_DIR/$VER/download/$OS"
+              mkdir -p "$PLATFORM_DIR"
+              cat > "$PLATFORM_DIR/$ARCH" <<JSON
           {
             "protocols": ["6.0"],
-            "os": "linux",
-            "arch": "amd64",
+            "os": "$OS",
+            "arch": "$ARCH",
             "filename": "$ZIP_NAME",
             "download_url": "$ZIP_URL",
             "shasums_url": "$SUMS_URL",
@@ -108,7 +110,18 @@ jobs:
           }
           JSON
 
-            VERSIONS_BLOCK="${VERSIONS_BLOCK}{\"version\":\"$VER\",\"protocols\":[\"6.0\"],\"platforms\":[$PLATFORMS_BLOCK]},"
+              PLATFORMS_FOR_VERSION="${PLATFORMS_FOR_VERSION}{\"os\":\"$OS\",\"arch\":\"$ARCH\"},"
+            done < <(echo "$ASSETS" | jq -r '.[] | select(.name | endswith(".zip")) | [.name, .url] | @tsv')
+
+            # Strip trailing comma from platforms list
+            PLATFORMS_FOR_VERSION="${PLATFORMS_FOR_VERSION%,}"
+
+            if [ -z "$PLATFORMS_FOR_VERSION" ]; then
+              echo "::warning::No zip assets for $TAG; skipping"
+              continue
+            fi
+
+            VERSIONS_BLOCK="${VERSIONS_BLOCK}{\"version\":\"$VER\",\"protocols\":[\"6.0\"],\"platforms\":[$PLATFORMS_FOR_VERSION]},"
           done < <(jq -r '.[].tagName' "$RELEASES_JSON")
 
           # Strip trailing comma
@@ -126,6 +139,8 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          # Remove stale registry files (old .json files from previous versions)
+          git rm -r --quiet --ignore-unmatch v1/ .well-known/ .nojekyll 2>/dev/null || true
           git add .nojekyll .well-known/ v1/
           if git diff --cached --quiet; then
             echo "No registry changes to commit."
