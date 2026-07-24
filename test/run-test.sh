@@ -3,7 +3,32 @@ set -euo pipefail
 
 cd "$(dirname "$0")"
 
-# Save the original config so we can restore it after the test.
+# Determine provider version: use PROVIDER_VERSION env if set, otherwise "~> 0.0".
+if [ -n "${PROVIDER_VERSION:-}" ]; then
+  VERSION_CONSTRAINT="= ${PROVIDER_VERSION}"
+else
+  VERSION_CONSTRAINT="~> 0.0"
+fi
+
+# Generate main.tf with the pinned version constraint.
+cat > main.tf <<EOF
+terraform {
+  required_providers {
+    hello = {
+      source  = "paul-the-wizord.github.io/example/hello"
+      version = "${VERSION_CONSTRAINT}"
+    }
+  }
+}
+
+provider "hello" {}
+
+resource "hello_world" "demo" {
+  name = "world"
+}
+EOF
+
+# Save the generated config so we can restore it after the test.
 cp main.tf main.tf.bak
 trap 'cp main.tf.bak main.tf && rm -f main.tf.bak' EXIT
 
