@@ -1,0 +1,97 @@
+name: 1. Build and Release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build, Sign, Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Determine next version
+        id: version
+        run: |
+          set -euo pipefail
+          LATEST=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+          # Strip leading 'v', bump patch, re-add 'v'
+          BASE=${LATEST#v}
+          MAJOR=$(echo "$BASE" | cut -d. -f1)
+          MINOR=$(echo "$BASE" | cut -d. -f2)
+          PATCH=$(echo "$BASE" | cut -d. -f3)
+          PATCH=$((PATCH + 1))
+          VERSION="v${MAJOR}.${MINOR}.${PATCH}"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "version_nov=${MAJOR}.${MINOR}.${PATCH}" >> "$GITHUB_OUTPUT"
+          echo "Next version: $VERSION"
+
+      - name: Build provider (linux/amd64)
+        env:
+          VERSION: ${{ steps.version.outputs.version_nov }}
+        run: |
+          mkdir -p dist
+          GOOS=linux GOARCH=amd64 CGO_ENABLED=0 \
+            go build -ldflags "-X main.Version=${VERSION}" \
+            -o dist/terraform-provider-hello_v${VERSION} .
+          (cd dist && zip -j \
+            terraform-provider-hello_${VERSION}_linux_amd64.zip \
+            terraform-provider-hello_v${VERSION})
+
+      - name: Generate SHA256SUMS
+        run: |
+          cd dist
+          sha256sum *.zip > SHA256SUMS
+          cat SHA256SUMS
+
+      - name: Import GPG key
+        run: |
+          echo "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --import --batch
+          echo "default-cache-ttl 7200" >> ~/.gnupg/gpg-agent.conf
+          gpg-connect-agent reloadagent /bye || true
+
+      - name: Sign SHA256SUMS
+        env:
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+        run: |
+          cd dist
+          gpg --detach-sign \
+            --passphrase "$GPG_PASSPHRASE" \
+            --batch --yes \
+            --pinentry-mode loopback \
+            SHA256SUMS
+          ls -la
+
+      - name: Create git tag
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag "$VERSION"
+          git push origin "$VERSION"
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          gh release create "$VERSION" \
+            --title "$VERSION" \
+            --notes "Automated release $VERSION" \
+            --verify-tag \
+            dist/terraform-provider-hello_*.zip \
+            dist/SHA256SUMS \
+            dist/SHA256SUMS.sig

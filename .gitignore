@@ -1,0 +1,23 @@
+# Binaries / build output
+/bin/
+/dist/
+*.zip
+*.exe
+
+# GPG private key (never commit)
+private-key.asc
+*.gpg
+
+# Terraform local state / cache
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+
+# Go workspace files
+go.work
+go.work.sum
+
+# OS/editor
+.DS_Store
+*.swp
