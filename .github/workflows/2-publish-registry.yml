@@ -59,7 +59,8 @@ jobs:
           echo "Releases:"; cat "$RELEASES_JSON"
 
           # Build the "List Available Versions" index and per-version download JSON
-          INDEX_FILE="$PROVIDER_DIR/index.json"
+          # Origin registry protocol uses extensionless paths: /versions and /download/:os/:arch
+          VERSIONS_FILE="$PROVIDER_DIR/versions"
           VERSIONS_BLOCK=""
           PLATFORMS_BLOCK='{"os":"linux","arch":"amd64"}'
 
@@ -86,7 +87,7 @@ jobs:
             # Per-version download JSON
             VERSION_DIR="$PROVIDER_DIR/$VER/download/linux"
             mkdir -p "$VERSION_DIR"
-            cat > "$VERSION_DIR/amd64.json" <<JSON
+            cat > "$VERSION_DIR/amd64" <<JSON
           {
             "protocols": ["6.0"],
             "os": "linux",
@@ -113,12 +114,12 @@ jobs:
           # Strip trailing comma
           VERSIONS_BLOCK="${VERSIONS_BLOCK%,}"
 
-          cat > "$INDEX_FILE" <<JSON
+          cat > "$VERSIONS_FILE" <<JSON
           {"versions":[$VERSIONS_BLOCK]}
           JSON
 
-          echo "=== index.json ==="
-          cat "$INDEX_FILE"
+          echo "=== versions ==="
+          cat "$VERSIONS_FILE"
 
       - name: Commit registry metadata
         run: |
