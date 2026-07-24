@@ -69,6 +69,7 @@ func (r *HelloWorldResource) Create(ctx context.Context, req resource.CreateRequ
 	name := plan.Name.ValueString()
 	msg := fmt.Sprintf("hello, %s!", name)
 	tflog.Warn(ctx, msg)
+	resp.Diagnostics.AddWarning("hello_world", msg)
 
 	plan.Id = types.StringValue("hello-world")
 	resp.Diagnostics.Append(resp.State.Set(ctx, &plan)...)
@@ -89,6 +90,7 @@ func (r *HelloWorldResource) Update(ctx context.Context, req resource.UpdateRequ
 	name := plan.Name.ValueString()
 	msg := fmt.Sprintf("%s changed!", name)
 	tflog.Warn(ctx, msg)
+	resp.Diagnostics.AddWarning("hello_world", msg)
 
 	resp.Diagnostics.Append(resp.State.Set(ctx, &plan)...)
 }
@@ -104,4 +106,5 @@ func (r *HelloWorldResource) Delete(ctx context.Context, req resource.DeleteRequ
 	name := state.Name.ValueString()
 	msg := fmt.Sprintf("bye, %s!", name)
 	tflog.Warn(ctx, msg)
+	resp.Diagnostics.AddWarning("hello_world", msg)
 }
