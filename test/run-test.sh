@@ -7,8 +7,19 @@ cd "$(dirname "$0")"
 cp main.tf main.tf.bak
 trap 'cp main.tf.bak main.tf && rm -f main.tf.bak' EXIT
 
-echo "=== terraform init ==="
-terraform init -input=false
+echo "=== terraform init (with retry for GitHub Pages propagation) ==="
+for i in $(seq 1 12); do
+  if terraform init -input=false; then
+    break
+  fi
+  echo "terraform init failed (attempt $i/12); waiting 15s for GitHub Pages..."
+  rm -rf .terraform .terraform.lock.hcl
+  sleep 15
+done
+if [ ! -f .terraform.lock.hcl ]; then
+  echo "::error::terraform init failed after retries"
+  exit 1
+fi
 
 echo "=== Step 1: create (expect 'hello, world!') ==="
 terraform apply -input=false -auto-approve 2>&1 | tee /tmp/apply1.log
